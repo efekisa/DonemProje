@@ -29,16 +29,14 @@ namespace Dönem_Projesi
             listBox1.Items.Clear();
 
 
-            // aktifMusteri'nin sepetindeki her bir ürünü dönüyoruz
             foreach (var urun in aktifMusteri.sepetim)
             {
-                // ListBox'a ürün adı ve fiyatını ekle
-                listBox1.Items.Add((urun.UrunAdi, +urun.Fiyat, "TL"));
+                listBox1.Items.Add((urun.UrunAdi +urun.Fiyat +  "TL"));
 
-                // Toplam tutara ekle
                 toplamTutar += (int)urun.Fiyat;
             }
             label2.Text = ("Toplam" + toplamTutar.ToString() + "TL");
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -47,17 +45,17 @@ namespace Dönem_Projesi
             {
                 foreach (var urun in aktifMusteri.sepetim)
                 {
-                    // Ürünün tipine göre doğru listeye geri iade ediyoruz
+                    // Ürünleri listeye geri koydum
                     if (urun is Urun.Kalemlik)
-                        UrunEkle.kalemlikler.Add((Urun.Kalemlik)urun);
+                        Urunler.kalemlikler.Add((Urun.Kalemlik)urun);
                     else if (urun is Urun.Masa)
-                        UrunEkle.masalar.Add((Urun.Masa)urun);
+                        Urunler.masalar.Add((Urun.Masa)urun);
                     else if (urun is Urun.Pano)
-                        UrunEkle.panolar.Add((Urun.Pano)urun);
+                        Urunler.panolar.Add((Urun.Pano)urun);
                     else if (urun is Urun.Kalem)
-                        UrunEkle.kalemler.Add((Urun.Kalem)urun);
+                        Urunler.kalemler.Add((Urun.Kalem)urun);
                     else if (urun is Urun.Sandalye)
-                        UrunEkle.sandalyeler.Add((Urun.Sandalye)urun);
+                        Urunler.sandalyeler.Add((Urun.Sandalye)urun);
                 }
                 aktifMusteri.sepetim.Clear();
 
@@ -75,19 +73,26 @@ namespace Dönem_Projesi
             yeniEkran.Show();
             this.Close();
         }
-
+        bool kuponUygulandiMi = false;
         private void button3_Click(object sender, EventArgs e)
         {
-            string girilenKod = textBox1.Text;
+            string girilenKod = textBox1.Text.Trim().ToUpper();
 
-            var bulunanKupon = Kuponlar.kupon.FirstOrDefault(k => k.KuponKodu == girilenKod);
+            var bulunanKupon = Kuponlar.kuponlar.FirstOrDefault(k =>k.KuponKodu.Trim().Equals(girilenKod, StringComparison.OrdinalIgnoreCase));
 
+            
+            if (kuponUygulandiMi) 
+            {
+                MessageBox.Show("Bu sepette zaten kupon kullanıldı.");
+                return;
+            }
             if (bulunanKupon != null)
             {
                 if (bulunanKupon.KuponMiktarı > 0)
                 {
+                    kuponUygulandiMi = true;
                     int indirimOrani = bulunanKupon.KuponIndirimMiktari;
-                    toplamTutar = toplamTutar * indirimOrani / 100;
+                    toplamTutar = toplamTutar - (toplamTutar * indirimOrani / 100);
 
                     bulunanKupon.KuponMiktarı--;
 
@@ -96,7 +101,8 @@ namespace Dönem_Projesi
 
                     if (bulunanKupon.KuponMiktarı == 0)
                     {
-                        Kuponlar.kupon.Remove(bulunanKupon);
+                        Kuponlar.kuponlar.Remove(bulunanKupon);
+
                     }
                 }
                 else
@@ -113,6 +119,16 @@ namespace Dönem_Projesi
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Listedeki kupon sayısı: " + Kuponlar.kuponlar.Count);
+            foreach (var k in Kuponlar.kuponlar)
+            {
+                // Kupon kodunu parantez içinde gösteriyoruz ki başında-sonunda boşluk var mı görelim
+                MessageBox.Show("Sistemdeki Kod"+k.KuponKodu);
+            }
         }
     }
 }

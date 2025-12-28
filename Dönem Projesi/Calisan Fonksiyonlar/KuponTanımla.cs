@@ -23,28 +23,47 @@ namespace Dönem_Projesi
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            
             Kuponlar kupon = new Kuponlar();
-            if (int.TryParse(textBox2.Text, out int kodmiktar))
+            if (int.TryParse(textBox2.Text, out int miktar))
             {
-                string hatalar = "";
-                kupon.KuponMiktarı = kodmiktar;
-                if (!int.TryParse(textBox2.Text, out _))
-                    hatalar += "- Miktar sayı olmalı.\n";
-
-                if (!DateTime.TryParse(textBox3.Text, out _))
-                    hatalar += "- Tarih formatı hatalı.\n";
-
-                if (hatalar != "")
+                kupon.KuponMiktarı = miktar;
+            }
+            else    
+            {     
+                MessageBox.Show("Lütfen geçerli bir miktar giriniz.");
+                return;
+            }
+            if (DateTime.TryParse(textBox3.Text, out DateTime sure))
+            {
+                kupon.KuponBitisTarihi = sure;
+            }
+            else
+            {
+                MessageBox.Show("Lütfen geçerli bir tarih giriniz.");
+                return;
+            }
+            if (int.TryParse(textBox5.Text, out int oran))
+                if (oran >= 0 && oran <= 100) 
                 {
-                    MessageBox.Show("Lütfen şu hataları düzeltin:\n" + hatalar);
+                    kupon.KuponIndirimMiktari = oran;
+                    kupon.KuponKodu = textBox1.Text;
+                    Kuponlar.kuponlar.Add(kupon);
                 }
                 else
                 {
-                    // Tüm veriler doğru, kayıt işlemini yap
+                    MessageBox.Show("Lütfen 0 ile 100 arasında bir sayı giriniz.");
+                    return;
                 }
-            }
+                else
+                { 
+                    MessageBox.Show("Lütfen bir indirim oranı giriniz.");
+                    return;
+                }
         }
-            
+                
+                
+        
 
 
         private void button2_Click(object sender, EventArgs e)
@@ -52,6 +71,11 @@ namespace Dönem_Projesi
             this.Close();
             CalisanDashboard Anaekran = new CalisanDashboard(aktifKullanici);
             Anaekran.Show();
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

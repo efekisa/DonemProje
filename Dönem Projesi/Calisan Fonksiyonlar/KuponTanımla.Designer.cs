@@ -43,11 +43,12 @@
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(183, 137);
+            textBox5.Location = new Point(183, 332);
             textBox5.Margin = new Padding(3, 4, 3, 4);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(114, 27);
             textBox5.TabIndex = 22;
+            textBox5.TextChanged += textBox5_TextChanged;
             // 
             // label8
             // 
@@ -71,7 +72,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(183, 328);
+            textBox1.Location = new Point(183, 141);
             textBox1.Margin = new Padding(3, 4, 3, 4);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(114, 27);

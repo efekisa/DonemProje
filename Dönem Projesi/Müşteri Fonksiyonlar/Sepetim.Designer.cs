@@ -36,6 +36,7 @@
             textBox1 = new TextBox();
             label3 = new Label();
             button3 = new Button();
+            button4 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -111,11 +112,22 @@
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 
+            // button4
+            // 
+            button4.Location = new Point(311, 511);
+            button4.Name = "button4";
+            button4.Size = new Size(94, 29);
+            button4.TabIndex = 8;
+            button4.Text = "button4";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
+            // 
             // Sepetim
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(695, 552);
+            Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(label3);
             Controls.Add(textBox1);
@@ -141,5 +153,6 @@
         private TextBox textBox1;
         private Label label3;
         private Button button3;
+        private Button button4;
     }
 }

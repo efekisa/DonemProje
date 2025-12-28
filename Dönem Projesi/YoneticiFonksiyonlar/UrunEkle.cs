@@ -50,35 +50,35 @@ namespace Dönem_Projesi
             // Boş hepsini içerdiği için tüm listeyi silmemesi adına
             if (!string.IsNullOrEmpty(arananUrun))
             {
-                if (UrunEkle.kalemler.RemoveAll(c => c.UrunKodu.Contains(arananUrun)) > 0)
+                if (Urunler.kalemler.RemoveAll(c => c.UrunKodu.Contains(arananUrun)) > 0)
                 {
                     MessageBox.Show("Ürün başarıyla kaldırılmıştır.");
                     this.Close();
                     YoneticiDashboard Anaekran = new YoneticiDashboard();
                     Anaekran.Show();
                 }
-                else if (UrunEkle.masalar.RemoveAll(c => c.UrunKodu.Contains(arananUrun)) > 0)
+                else if (Urunler.masalar.RemoveAll(c => c.UrunKodu.Contains(arananUrun)) > 0)
                 {
                     MessageBox.Show("Ürün başarıyla kaldırılmıştır.");
                     this.Close();
                     YoneticiDashboard Anaekran = new YoneticiDashboard();
                     Anaekran.Show();
                 }
-                else if (UrunEkle.sandalyeler.RemoveAll(c => c.UrunKodu.Contains(arananUrun)) > 0)
+                else if (Urunler.sandalyeler.RemoveAll(c => c.UrunKodu.Contains(arananUrun)) > 0)
                 {
                     MessageBox.Show("Ürün başarıyla kaldırılmıştır.");
                     this.Close();
                     YoneticiDashboard Anaekran = new YoneticiDashboard();
                     Anaekran.Show();
                 }
-                else if (UrunEkle.kalemlikler.RemoveAll(c => c.UrunKodu.Contains(arananUrun)) > 0)
+                else if (Urunler.kalemlikler.RemoveAll(c => c.UrunKodu.Contains(arananUrun)) > 0)
                 {
                     MessageBox.Show("Ürün başarıyla kaldırılmıştır.");
                     this.Close();
                     YoneticiDashboard Anaekran = new YoneticiDashboard();
                     Anaekran.Show();
                 }
-                else if (UrunEkle.panolar.RemoveAll(c => c.UrunKodu.Contains(arananUrun)) > 0)
+                else if (Urunler.panolar.RemoveAll(c => c.UrunKodu.Contains(arananUrun)) > 0)
                 {
                     MessageBox.Show("Ürün başarıyla kaldırılmıştır.");
                     this.Close();
@@ -97,11 +97,7 @@ namespace Dönem_Projesi
             }
 
         }
-        public static List<Urun.Kalem> kalemler = new List<Urun.Kalem>();
-        public static List<Urun.Masa> masalar = new List<Urun.Masa>();
-        public static List<Urun.Sandalye> sandalyeler = new List<Urun.Sandalye>();
-        public static List<Urun.Kalemlik> kalemlikler = new List<Urun.Kalemlik>();
-        public static List<Urun.Pano> panolar = new List<Urun.Pano>();
+        
         private void button1_Click_1(object sender, EventArgs e)
         {
             if (textBox1.Text.ToLower()== "kalem")
@@ -110,7 +106,8 @@ namespace Dönem_Projesi
                 kalem.UrunKodu=textBox5.Text.ToLower();
                 kalem.Adet=int.Parse(textBox2.Text);
                 kalem.Fiyat=int.Parse(textBox3.Text);
-                kalemler.Add(kalem);
+                Urunler.kalemler.Add(kalem);
+                MessageBox.Show("Kalem Başarıyla Eklendi.");
 
             }
             else if (textBox1.Text.ToLower() == "masa")
@@ -119,7 +116,8 @@ namespace Dönem_Projesi
                 masa.UrunKodu = textBox5.Text.ToLower();
                 masa.Adet = int.Parse(textBox2.Text);
                 masa.Fiyat = int.Parse(textBox3.Text);
-                masalar.Add(masa);
+                Urunler.masalar.Add(masa);
+                MessageBox.Show("Masa Başarıyla Eklendi.");
             }
             else if (textBox1.Text.ToLower() == "sandalye")
             {
@@ -127,7 +125,8 @@ namespace Dönem_Projesi
                 sandalye.UrunKodu = textBox5.Text.ToLower();
                 sandalye.Adet = int.Parse(textBox2.Text);
                 sandalye.Fiyat = int.Parse(textBox3.Text);
-                sandalyeler.Add(sandalye);
+                Urunler.sandalyeler.Add(sandalye);
+                MessageBox.Show("Sandalye Başarıyla Eklendi.");
             }
             else if (textBox1.Text.ToLower() == "kalemlik")
             {
@@ -135,7 +134,8 @@ namespace Dönem_Projesi
                 kalemlik.UrunKodu = textBox5.Text.ToLower();
                 kalemlik.Adet = int.Parse(textBox2.Text);
                 kalemlik.Fiyat = int.Parse(textBox3.Text);
-                kalemlikler.Add(kalemlik);
+                Urunler.kalemlikler.Add(kalemlik);
+                MessageBox.Show("Kalemlik Başarıyla Eklendi.");
             }
             else if (textBox1.Text.ToLower() == "pano")
             {
@@ -143,7 +143,8 @@ namespace Dönem_Projesi
                 pano.UrunKodu = textBox5.Text.ToLower();
                 pano.Adet = int.Parse(textBox2.Text);
                 pano.Fiyat = int.Parse(textBox3.Text);
-                panolar.Add(pano);
+                Urunler.panolar.Add(pano);
+                MessageBox.Show("Pano Başarıyla Eklendi.");
             }
             else
             {

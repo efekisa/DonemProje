@@ -24,29 +24,29 @@ namespace Dönem_Projesi
             listBox2.Items.Clear();
             int altLimit = 3;
 
-            if (UrunEkle.kalemlikler.Count < altLimit)
+            if (Urunler.kalemlikler.Count < altLimit)
             {
-                listBox2.Items.Add("Kalan Kalemlik "+UrunEkle.kalemlikler.Count);
+                listBox2.Items.Add("Kalan Kalemlik "+Urunler.kalemlikler.Count);
             }
 
-            if (UrunEkle.panolar.Count < altLimit)
+            if (Urunler.panolar.Count < altLimit)
             {
-                listBox2.Items.Add("Kalan Pano" + UrunEkle.panolar.Count);
+                listBox2.Items.Add("Kalan Pano" + Urunler.panolar.Count);
             }
 
-            if (UrunEkle.kalemler.Count < altLimit)
+            if (Urunler .kalemler.Count < altLimit)
             {
-                listBox2.Items.Add("Kalan Kalem "+UrunEkle.kalemler.Count);
+                listBox2.Items.Add("Kalan Kalem "+Urunler.kalemler.Count);
             }
 
-            if (UrunEkle.masalar.Count < altLimit)
+            if (Urunler.masalar.Count < altLimit)
             {
-                listBox2.Items.Add("Kalan Masa "+UrunEkle.masalar.Count);
+                listBox2.Items.Add("Kalan Masa "+Urunler.masalar.Count);
             }
 
-            if (UrunEkle.sandalyeler.Count < altLimit)
+            if (Urunler.sandalyeler.Count < altLimit)
             {
-                listBox2.Items.Add("Kalan Sandalye" +UrunEkle.sandalyeler.Count);
+                listBox2.Items.Add("Kalan Sandalye" +Urunler.sandalyeler.Count);
             }
 
             if (listBox2.Items.Count == 0)
@@ -58,16 +58,11 @@ namespace Dönem_Projesi
             label4.Text = aktifKullanici.Isim + aktifKullanici.SoyIsim;
             int musterisayi = HesapOlusturmaEkranı.musteriler.Count;
             listBox1.Items.Add(musterisayi);
-            int kalemsayi = UrunEkle.kalemler.Count;
-            int kalemliksayi=UrunEkle.kalemlikler.Count;
-            int masasayi=UrunEkle.masalar.Count;
-            int panosayi=UrunEkle.panolar.Count;
-            int sandalyesayi=UrunEkle.sandalyeler.Count;
-            listBox2.Items.Add("Kalan sandalye sayisi" +sandalyesayi+
-                "Kalan kalem sayisi"+kalemsayi+
-                "Kalan kalemlik sayisi"+ kalemliksayi+
-                "Kalan pano sayisi"+ panosayi+
-                "Kalan masa sayisi"+ masasayi );
+            int kalemsayi = Urunler.kalemler.Count;
+            int kalemliksayi=Urunler.kalemlikler.Count;
+            int masasayi=Urunler.masalar.Count;
+            int panosayi=Urunler.panolar.Count;
+            int sandalyesayi=Urunler.sandalyeler.Count;
 
         }
 

@@ -9,7 +9,7 @@ namespace Urun
     public class Kuponlar
     {
 
-        public static List<Kuponlar> kupon = new List<Kuponlar>();
+        public static List<Kuponlar> kuponlar = new List<Kuponlar>();
         public string KuponKodu;
         public int KuponMiktarı;
         public DateTime KuponBitisTarihi;

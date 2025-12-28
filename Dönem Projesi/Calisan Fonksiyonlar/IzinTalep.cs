@@ -29,19 +29,23 @@ namespace Dönem_Projesi
         private void button4_Click(object sender, EventArgs e)
         {
             listBox2.Items.Add(aktifKullanici.Izinhakki);
-            if (aktifKullanici.Izinhakki < int.Parse(textBox6.Text))
+            if (textBox6.Text != null) 
             {
-                MessageBox.Show("Lütfen izin hakkınız veya izin hakkınızdan daha az miktarda izin talep ediniz.");
-                return;
+                if (aktifKullanici.Izinhakki < int.Parse(textBox6.Text))
+                {
+                    MessageBox.Show("Lütfen izin hakkınız veya izin hakkınızdan daha az miktarda izin talep ediniz.");
+                    return;
+                }
+                else
+                {
+                    (aktifKullanici.Izinhakki) = aktifKullanici.Izinhakki - (int.Parse(textBox6.Text));
+                    MessageBox.Show("Talebiniz başarıyla alınmıştır.");
+                    this.Close();
+                    CalisanDashboard Anaekran = new CalisanDashboard(aktifKullanici);
+                    Anaekran.Show();
+                }
             }
-            else
-            {
-                (aktifKullanici.Izinhakki) = aktifKullanici.Izinhakki - (int.Parse(textBox6.Text));
-                MessageBox.Show("Talebiniz başarıyla alınmıştır.");
-                this.Close();
-                CalisanDashboard Anaekran = new CalisanDashboard(aktifKullanici);
-                Anaekran.Show();
-            }
+            
         }
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)

@@ -169,6 +169,7 @@
             button2.TabIndex = 25;
             button2.Text = "Vazgeç";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // numericUpDown1
             // 
@@ -229,7 +230,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(695, 552);
+            ClientSize = new Size(769, 552);
             Controls.Add(button3);
             Controls.Add(numericUpDown5);
             Controls.Add(numericUpDown4);

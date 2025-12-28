@@ -34,12 +34,11 @@ namespace Dönem_Projesi
 
         private void Urunler_Load(object sender, EventArgs e)
         {
-
-            numericUpDown1.Maximum = Urunler.kalemlikler.Count;
-            numericUpDown2.Maximum = Urunler.panolar.Count;
-            numericUpDown3.Maximum = Urunler.kalemler.Count;
-            numericUpDown4.Maximum = Urunler.masalar.Count;
-            numericUpDown5.Maximum = Urunler.sandalyeler.Count;
+            numericUpDown1.Maximum = Urunler.kalemlikler.Count; 
+            numericUpDown2.Maximum = Urunler.panolar.Count; 
+            numericUpDown3.Maximum = Urunler.kalemler.Count; 
+            numericUpDown4.Maximum = Urunler.masalar.Count;   
+            numericUpDown5.Maximum = Urunler.sandalyeler.Count; 
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -59,7 +58,7 @@ namespace Dönem_Projesi
 
                 numericUpDown1.Maximum = Urunler.kalemlikler.Count;
             }
-            else if (miktarkalemlik > 0)
+            else if (miktarkalemlik > Urunler.kalemlikler.Count)
             {
                 MessageBox.Show("Stokta yeterli kalemlik bulunmamaktadır!");
             }
@@ -78,7 +77,7 @@ namespace Dönem_Projesi
 
                 numericUpDown2.Maximum = Urunler.panolar.Count;
             }
-            else if (miktarpanolar > 0)
+            else if (miktarpanolar > Urunler.panolar.Count)
             {
                 MessageBox.Show("Stokta yeterli pano bulunmamaktadır!");
             }
@@ -97,7 +96,7 @@ namespace Dönem_Projesi
 
                 numericUpDown3.Maximum = Urunler.kalemler.Count;
             }
-            else if (miktarkalemler > 0)
+            else if (miktarkalemler > Urunler.kalemler.Count)
             {
                 MessageBox.Show("Stokta yeterli kalem bulunmamaktadır!");
             }
@@ -114,9 +113,8 @@ namespace Dönem_Projesi
                     Urunler.masalar.Remove(secilenUrun4);
                 }
 
-                numericUpDown4.Maximum = Urunler.masalar.Count;
             }
-            else if (miktarmasalar > 0)
+            else if (miktarmasalar > Urunler.masalar.Count)
             {
                 MessageBox.Show("Stokta yeterli masa bulunmamaktadır!");
             }
@@ -135,7 +133,7 @@ namespace Dönem_Projesi
 
                 numericUpDown5.Maximum = Urunler.sandalyeler.Count;
             }
-            else if (miktarsandalye > 0)
+            else if (miktarsandalye > Urunler.sandalyeler.Count)
             {
                 MessageBox.Show("Stokta yeterli sandalye bulunmamaktadır!");
             }
@@ -167,5 +165,15 @@ namespace Dönem_Projesi
             yeniEkran.Show();
             this.Hide();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MüşteriEkran yeniEkran = new MüşteriEkran(aktifMusteri);
+            yeniEkran.Show();
+            this.Hide();
+
+        }
+
+        
     }
 }
